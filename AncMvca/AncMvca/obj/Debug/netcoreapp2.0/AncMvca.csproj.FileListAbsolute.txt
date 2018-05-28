@@ -1,0 +1,12 @@
+c:\users\userbt\source\repos\AncMvca\AncMvca\bin\Debug\netcoreapp2.0\AncMvca.deps.json
+c:\users\userbt\source\repos\AncMvca\AncMvca\bin\Debug\netcoreapp2.0\AncMvca.runtimeconfig.json
+c:\users\userbt\source\repos\AncMvca\AncMvca\bin\Debug\netcoreapp2.0\AncMvca.runtimeconfig.dev.json
+c:\users\userbt\source\repos\AncMvca\AncMvca\bin\Debug\netcoreapp2.0\AncMvca.dll
+c:\users\userbt\source\repos\AncMvca\AncMvca\bin\Debug\netcoreapp2.0\AncMvca.pdb
+c:\users\userbt\source\repos\AncMvca\AncMvca\obj\Debug\netcoreapp2.0\AncMvca.csprojResolveAssemblyReference.cache
+c:\users\userbt\source\repos\AncMvca\AncMvca\obj\Debug\netcoreapp2.0\AncMvca.csproj.CoreCompileInputs.cache
+c:\users\userbt\source\repos\AncMvca\AncMvca\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+c:\users\userbt\source\repos\AncMvca\AncMvca\obj\Debug\netcoreapp2.0\AncMvca.AssemblyInfoInputs.cache
+c:\users\userbt\source\repos\AncMvca\AncMvca\obj\Debug\netcoreapp2.0\AncMvca.AssemblyInfo.cs
+c:\users\userbt\source\repos\AncMvca\AncMvca\obj\Debug\netcoreapp2.0\AncMvca.dll
+c:\users\userbt\source\repos\AncMvca\AncMvca\obj\Debug\netcoreapp2.0\AncMvca.pdb

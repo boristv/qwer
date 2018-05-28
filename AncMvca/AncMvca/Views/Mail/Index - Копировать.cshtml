@@ -1,0 +1,118 @@
+﻿@*//получение списка сообщений*@
+@model AncMvca.Models.ApplicationUser
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Mail</h2>
+
+<div> <button onclick="loadMessages()" id="button">Загрузить messages.json!</button> </div>
+
+<ul id="list"></ul>
+
+<script>
+    function loadMessages() {
+
+        var xhr = new XMLHttpRequest();
+
+        xhr.open("GET", "http://localhost:49713/api/messages");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState != 4) return;
+
+            button.parentNode.removeChild(button);
+
+            if (xhr.status != 200) {
+                // обработать ошибку
+                alert(xhr.status + ': ' + xhr.statusText);
+            } else {
+                try {
+                    var messages = JSON.parse(xhr.responseText);
+                } catch (e) {
+                    alert("Некорректный ответ " + e.message);
+                }
+                showMessages(messages);
+            }
+
+        }
+
+        xhr.send();
+
+        button.innerHTML = 'Загружаю...';
+        button.disabled = true;
+    }
+
+    function showMessages(messages) {
+
+        messages.forEach(function (message) {
+            var li = list.appendChild(document.createElement('li'));
+            //message = message.Where(p => (p.nameGetter == model.UserName || p.nameSender == model.UserName))
+            if (message.nameGetter == "1@mail.ru")
+                li.innerHTML = "From " + message.nameSender + " to " + message.nameGetter + ": " + message.text + "    " + @ViewData["name"];
+        });
+
+    }
+</script>
+
+@*//отправка сообщения*@
+
+
+@*@{
+        ViewData["Title"] = "Index";
+    }
+
+    <h2>Mail</h2>
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Test CORS</title>
+    </head>
+    <body>
+        <div id="result">
+
+        </div>
+        <div><p><button id="btn" value="Запрос">Запрос</button></p></div>
+
+        <script>
+            var btn = document.getElementById("btn");
+            var result = document.getElementById("result");
+            var request = new XMLHttpRequest();
+
+            btn.addEventListener("click", function (e) {
+                request.open("GET", "http://localhost:49713/");
+                request.onreadystatechange = reqReadyStateChange;
+                request.send();
+            });
+
+            function reqReadyStateChange() {
+                if (request.readyState == 4) {
+                    var status = request.status;
+                    if (status == 200)
+                        result.innerText = request.responseText;
+                    else
+                        result.innerText = request.statusText;
+                }
+            }
+        </script>
+    </body>
+    </html>*@
+
+@*@using (Html.BeginForm())
+    {
+        <p>
+            <label>Кому</label><br />
+            @Html.TextBox("message")
+        </p>
+        <p>
+            <label>Текст</label><br />
+            @Html.TextBox("")
+        </p>
+        <p>
+            <input type="submit" value="Отправить" />
+        </p>
+    }*@
+
+
+

@@ -1,0 +1,11 @@
+c:\users\userbt\source\repos\AncApi\AncApi\bin\Debug\netcoreapp2.0\AncApi.deps.json
+c:\users\userbt\source\repos\AncApi\AncApi\bin\Debug\netcoreapp2.0\AncApi.runtimeconfig.json
+c:\users\userbt\source\repos\AncApi\AncApi\bin\Debug\netcoreapp2.0\AncApi.runtimeconfig.dev.json
+c:\users\userbt\source\repos\AncApi\AncApi\bin\Debug\netcoreapp2.0\AncApi.dll
+c:\users\userbt\source\repos\AncApi\AncApi\bin\Debug\netcoreapp2.0\AncApi.pdb
+c:\users\userbt\source\repos\AncApi\AncApi\obj\Debug\netcoreapp2.0\AncApi.csprojResolveAssemblyReference.cache
+c:\users\userbt\source\repos\AncApi\AncApi\obj\Debug\netcoreapp2.0\AncApi.csproj.CoreCompileInputs.cache
+c:\users\userbt\source\repos\AncApi\AncApi\obj\Debug\netcoreapp2.0\AncApi.AssemblyInfoInputs.cache
+c:\users\userbt\source\repos\AncApi\AncApi\obj\Debug\netcoreapp2.0\AncApi.AssemblyInfo.cs
+c:\users\userbt\source\repos\AncApi\AncApi\obj\Debug\netcoreapp2.0\AncApi.dll
+c:\users\userbt\source\repos\AncApi\AncApi\obj\Debug\netcoreapp2.0\AncApi.pdb

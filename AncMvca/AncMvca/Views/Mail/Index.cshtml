@@ -1,0 +1,131 @@
+﻿@model IEnumerable<AncMvca.Models.ApplicationUser>
+@{
+    ViewData["Title"] = "Mail";
+}
+
+<h2>Mail</h2>
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Чат</title>
+    <link href="lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+    <script src="lib/jquery/dist/jquery.js"></script>
+</head>
+<body>
+    <form id="1" asp-action="create" asp-controller="Mail">
+
+        <div class="form-group">
+            <input type="hidden" class="form-control" name="id1" value=@TempData["UserName"] />
+        </div>
+        <div class="form-group">
+            <label for="id2">С кем:</label>
+            <input class="form-control" name="id2" />
+        </div>
+        <div class="panel-body">
+            <button id="1" type="submit" class="btn btn-sm btn-primary">Перейти в чат</button>
+            <a id="reset" class="btn btn-sm btn-primary">Сбросить</a>
+        </div>
+    </form>
+    <ul id="list"></ul>
+
+
+    <form id="2">
+        <div class="form-group">
+            <label for="text">Введите сообщение:</label>
+            <input class="form-control" name="text" />
+        </div>
+        <div class="panel-body">
+            <button id="2" type="submit" class="btn btn-sm btn-primary">Отправить</button>
+        </div>
+    </form>
+
+
+    <script>
+        $("#reset").click(function (e) {
+
+            e.preventDefault();
+            location.reload();
+
+        })
+
+
+        var request = new XMLHttpRequest();
+
+        var id1 = "id1";
+        var id2 = "id2";
+        $("form#1").submit(function (e) {
+            e.preventDefault();
+
+            id1 = this.elements["id1"].value;
+            id2 = this.elements["id2"].value;
+
+            try {
+                request.open("GET", "http://localhost:49713/api/messages" + "/" + id1 + "/" + id2);
+            }
+            catch (e) { alert("Server off"); }
+            request.onreadystatechange = reqReadyStateChange;
+            request.send()
+        });
+
+
+
+        function showMessages(messages) {
+            while (list.childNodes[0]) {
+                list.removeChild(list.childNodes[0]);
+            }
+            messages.forEach(function (message) {
+                var li = list.appendChild(document.createElement('li'));
+                li.innerHTML = "From " + message.nameSender + " to " + message.nameGetter + ": " + message.text;
+            });
+
+        }
+        function reqReadyStateChange() {
+            if (request.readyState == 4) {
+                var status = request.status;
+                if (status == 200) {
+                    try {
+                        var messages = JSON.parse(request.responseText);
+                    }
+                    catch (e) {
+                        alert("Некорректный ответ " + e.message);
+                    }
+                    showMessages(messages);
+                }
+                else alert(status + ': ' + "Не получен ответ от сервера");
+            }
+        }
+
+
+        var text = "null";
+        $("form#2").submit(function (e) {
+            text = this.elements["text"].value;
+            e.preventDefault();
+            Send(id1, id2, text);
+        });
+
+        function Send(id1, id2, text) {
+            
+            $.ajax({
+                url: "http://localhost:49713/api/messages",
+                contentType: "application/json",
+                method: "POST",
+                data: JSON.stringify({
+                    nameSender: id1,
+                    nameGetter: id2,
+                    text: text
+                }),
+                success: function (user) {
+                    try {
+                        request.open("GET", "http://localhost:49713/api/messages" + "/" + id1 + "/" + id2);
+                    }
+                    catch (e) { alert("Server off"); }
+                    request.onreadystatechange = reqReadyStateChange;
+                    request.send()
+                }
+            })
+        }
+    </script>
+</body>
